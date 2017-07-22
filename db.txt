@@ -1,0 +1,43 @@
+Table 1
+TableName : attackProfile 攻击模版
+fieldlist:
+id         : int, primary key, auto incremental
+attackid   : int, 攻击模板ID 
+name       : varchar(63) profile name; 攻击模版名
+attacktype : varchar(15) 攻击类型，可用值 TCP, UDP, ICMP
+attackspeed: int 攻击速度，单位为pps, 有效值 0~1000000
+addressmode: varchar(15) 源地址伪造类型,可用值TRUE,LOCALRANDOM,RANDOM
+dstports   : varchar(64) 攻击端口类型,仅对TCP和UDP有效 有效取值 0~65535,70000,70001
+tcpflags   : varchar(64) 攻击报文TCP FLAG类型，仅对TCP有效,有效组合，SYN,ACK,RST,FIN,PUSH,URG
+icmptype   : varchar(64) 攻击报文 ICMP TYPE类型，仅对 ICMP有效，有效取值 0~255,70000,70001
+icmpcode   : varchar(64) 攻击报文 ICMP CODE类型，仅对 ICMP有效，有效取值 0~255,70000,70001
+payloadlength  : int 攻击负载长度，
+payloadcontent : int 攻击负载类型
+payloadfile    : varchar(64) 攻击负载文件
+
+Table 2
+TableName : hostConfig 主机配置
+fieldlist:
+id         : int, primary key, auto incremental
+experimentID ：实验ID
+name       : varchar(63) 主机节点名
+nicname    : varchar(31) 网卡名
+gwaddr     : varchar(31) 网关Mac地址
+attackid   : int 攻击模版ID
+attacktime : int 攻击持续时间，单位秒
+
+Table 3
+TableName ： attackType 攻击类型表,常量表，存储攻击类型名TCP, UDP, ICMP
+id         : int, primary key, auto incremental
+name       : varchar(63)
+
+Table 4
+TableName ： addressMode 源地址模式表,常量表，存储源地址伪造模式TRUE,LOCALRANDOM,RANDOM
+id         : int, primary key, auto incremental
+name       : varchar(63)
+
+Table5
+TableName: PlatFormConfig 平台配置
+experimentID: int    当前实验ID
+
+
